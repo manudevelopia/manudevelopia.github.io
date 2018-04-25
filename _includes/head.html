@@ -16,4 +16,8 @@
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 
+{% if site.tags != "" %}
+{% include collecttags.html %}
+{% endif %}
+
 </head>
