@@ -49,6 +49,10 @@
 <lastmod>2017-02-18T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/Mockito101</loc>
+<lastmod>2018-06-11T00:00:00+02:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/404</loc>
 </url>
 <url>
@@ -65,6 +69,12 @@
 </url>
 <url>
 <loc>http://localhost:4000/tag/jekyll</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/mockito</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tag/testing</loc>
 </url>
 <url>
 <loc>http://localhost:4000/tag/typography</loc>

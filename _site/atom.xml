@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Monochrome | A minimal, responsive Jekyll blog theme</title>
+ <title>developia.info | another developer stories repository</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2018-04-24T17:54:02+02:00</updated>
+ <updated>2018-06-11T17:06:58+02:00</updated>
  <author>
-   <name>The Review Index</name>
-   <uri>https://thereviewindex.com</uri>
-   <email>dyutibarma@gmail.com</email>
+   <name>Manu Garcia</name>
+   <uri>http://developia.info</uri>
+   <email>manu@developia.info</email>
  </author>
+
+ 
+
+ <entry>
+   <title>Mockito 101</title>
+   <link href="http://localhost:4000/Mockito101"/>
+   <id>http://localhost:4000/Mockito101</id>
+   <updated>2018-06-11T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;Necesito mockear las respuestas de servicios y repositories, para ello me planteo utilizar Mockito, y esta lectura parece contener toda la información sobre como empezar http://www.baeldung.com/injecting-mocks-in-spring&lt;/p&gt; &lt;p&gt;Mockito nos permite crear la respuesta que esperaríamos obtener de un servicio o de un repositorio. Para ello tan solo tenemos que declarar para...</content>
+ </entry>
 
  
 
@@ -97,16 +107,6 @@
    <title>This is the third test post.</title>
    <link href="http://localhost:4000/test-post-3"/>
    <id>http://localhost:4000/test-post-3</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is second test post.</title>
-   <link href="http://localhost:4000/test-post-2"/>
-   <id>http://localhost:4000/test-post-2</id>
    <updated>2017-02-11T00:00:00+01:00</updated>
    <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
  </entry>
