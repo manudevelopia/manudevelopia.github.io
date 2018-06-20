@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>Mockito 104</title>
+  <meta name="description" content="Mockito primeros pasos">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+  <body>
+    <div id="wrap">
+
+      <!-- Navigation -->
+      <nav id="nav">
+	<div id="nav-list">
+		<a href="//">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Monochrome">About Monochrome</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+
+      <!-- Icon menu -->
+      <a id="nav-menu">
+        <div id="menu"></div>
+      </a>
+
+      <!-- Header -->
+      
+      <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="//">
+        <h1>
+          <span>devel</span>opia
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About Monochrome">About Monochrome</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+      <!-- Main content -->
+      <div id="container">
+
+        <main>
+
+          <article id="post-page">
+  <h2>Mockito 104</h2>
+  <time datetime="2018-06-01T00:00:00+02:00" class="by-line">01 Jun 2018</time>
+  <span>
+    
+    
+    <a href="/tag/testing"><code class="highligher-rouge"><nobr>testing</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/mockito"><code class="highligher-rouge"><nobr>mockito</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/performance"><code class="highligher-rouge"><nobr>performance</nobr></code>&nbsp;</a>
+    
+    </span>
+  <div class="content">
+
+    <p>Ahora tengo otro problema, uso Dozer y con @Mock sobre el maper el mapeo no es correcto, seguramente por que al tratarse de un mock no se tiene información sobre como realizar el mapeo, tal y como se describe en el xml de mapeos, con lo que el resultado del mapeo no es apto para continuar con el test.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre>    <span class="nd">@Mock</span>
+    <span class="n">DozerBeanMapper</span> <span class="n">mapper</span><span class="o">;</span> <span class="o">-&gt;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Utilizando @Spy e indicandole dónde encontrar el xml con la relación de mapeos lograremos que el mapper opere como se espera.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>    <span class="nd">@Spy</span>
+    <span class="n">DozerBeanMapper</span> <span class="n">mapper</span><span class="o">;</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">mapper</span><span class="o">.</span><span class="na">setMappingFiles</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"dozer-bean-mappings.xml"</span><span class="o">));</span>
+    <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>En el enlace de ‘Lecturas’ se indican otras vías alternativas a @Spy, del cual también se indica 
+que ha de usarse según que casos.</p>
+
+<p>Lecturas
+https://stackoverflow.com/a/49939545/3229871</p>
+
+
+
+  </div>
+</article>
+
+
+
+        </main>
+
+        <!-- Pagination links -->
+        
+
+      </div>
+
+      <!-- Footer -->
+      <footer><span>@2017 - Monochrome</span></footer>
+
+
+      <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+    </div>
+  </body>
+</html>

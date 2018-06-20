@@ -4,7 +4,7 @@
  <title>developia.info | another developer stories repository</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2018-06-20T12:12:42+02:00</updated>
+ <updated>2018-06-20T12:47:03+02:00</updated>
  <author>
    <name>Manu Garcia</name>
    <uri>http://developia.info</uri>
@@ -14,11 +14,31 @@
  
 
  <entry>
+   <title>Primer Hackday de GDG Toledo!</title>
+   <link href="http://localhost:4000/GDGHackDay-Toledo"/>
+   <id>http://localhost:4000/GDGHackDay-Toledo</id>
+   <updated>2018-06-17T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;El sábado 16 de Junio 2018 asistí al evento que organizaba el grupo de &lt;a href=&quot;https://www.meetup.com/gdgtoledo_es/&quot;&gt;meetup de GDG Toledo&lt;/a&gt;. Se trataba de un hackday temático de microservicios, testing y Docker. Para ello a los participantes se nos provisionó el siguiente [repositorio de Github] (https://github.com/gdgtoledo/docker-kata) para llevar a cabo la implementación...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Mockito 104</title>
+   <link href="http://localhost:4000/Mockito104-copia"/>
+   <id>http://localhost:4000/Mockito104 copia</id>
+   <updated>2018-06-01T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;Ahora tengo otro problema, uso Dozer y con @Mock sobre el maper el mapeo no es correcto, seguramente por que al tratarse de un mock no se tiene información sobre como realizar el mapeo, tal y como se describe en el xml de mapeos, con lo que el resultado del...</content>
+ </entry>
+
+ 
+
+ <entry>
    <title>Mockito 103</title>
    <link href="http://localhost:4000/Mockito103"/>
    <id>http://localhost:4000/Mockito103</id>
    <updated>2018-05-11T00:00:00+02:00</updated>
-   <content type="html">&lt;p&gt;Vale vale, ya veo el concepto, utilizado la reflexión se hace la mágia para hacer que se devuelva del elemento mockeado la respuesta que queremos para nuestro test, pero… no hay otra manera más estilo ‘Mockito’? Parece innecesariamente complicado hacer reflexión haciendo set del mock.&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td...</content>
+   <content type="html">&lt;p&gt;Tras leer Mockito102 veo el concepto, utilizado la reflexión se hace la mágia para hacer que se devuelva del elemento mockeado la respuesta que queremos para nuestro test, pero… no hay otra manera más estilo ‘Mockito’? Parece innecesariamente complicado hacer reflexión haciendo set del mock.&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td...</content>
  </entry>
 
  
