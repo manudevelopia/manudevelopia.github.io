@@ -4,7 +4,7 @@
  <title>developia.info | another developer stories repository</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2018-06-17T14:11:13+02:00</updated>
+ <updated>2018-06-20T12:12:42+02:00</updated>
  <author>
    <name>Manu Garcia</name>
    <uri>http://developia.info</uri>
@@ -14,101 +14,31 @@
  
 
  <entry>
-   <title>TheReviewIndex | Unbiased User Review Summaries | Monochrome</title>
-   <link href="http://localhost:4000/thereviewindex-introduction"/>
-   <id>http://localhost:4000/thereviewindex-introduction</id>
-   <updated>2017-02-18T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;The internet is a source of a humongous amount of unstructured content for all sorts of products, in the form of blogs, videos, user and expert reviews, etc. It is almost impossible for anyone to scour all of this disparate data, with contradictory opinions, and thereafter make a correct, or...</content>
+   <title>Mockito 103</title>
+   <link href="http://localhost:4000/Mockito103"/>
+   <id>http://localhost:4000/Mockito103</id>
+   <updated>2018-05-11T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;Vale vale, ya veo el concepto, utilizado la reflexión se hace la mágia para hacer que se devuelva del elemento mockeado la respuesta que queremos para nuestro test, pero… no hay otra manera más estilo ‘Mockito’? Parece innecesariamente complicado hacer reflexión haciendo set del mock.&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td...</content>
  </entry>
 
  
 
  <entry>
-   <title>Typography Example | Monochrome</title>
-   <link href="http://localhost:4000/typography-example"/>
-   <id>http://localhost:4000/typography-example</id>
-   <updated>2017-02-14T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/monochrome/img/img-test.png&quot; alt=&quot;Test&quot; title=&quot;Test&quot; /&gt; Lorem ipsum dolor sit amet, &lt;a href=&quot;http://www.example.com&quot;&gt;consectetur adipisicing&lt;/a&gt; elit. Id, aliquam magni et officiis nemo nihil aliquid placeat alias. Eum voluptates ducimus, nobis ex illum laboriosam quidem corrupti impedit ratione in voluptatum amet beatae facilis temporibus voluptate praesentium voluptatibus! At ab, iusto error amet eveniet...</content>
+   <title>Mockito 102</title>
+   <link href="http://localhost:4000/Mockito102"/>
+   <id>http://localhost:4000/Mockito102</id>
+   <updated>2018-04-24T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;Bien bien, lo recogido en el post ‘Mockito 101’ parece sencillo, pero en el mundo real los Controller/Services/Repositories llaman a servicios y repositories desde dentro de los métodos y claro no siempre se tiene en cuenta la testabilidad a la hora de escribir métodos, con lo que llegamos al y...</content>
  </entry>
 
  
 
  <entry>
-   <title>Code Example</title>
-   <link href="http://localhost:4000/code-example"/>
-   <id>http://localhost:4000/code-example</id>
-   <updated>2017-02-12T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;To insert highlight code inside of a post, it’s enough to use some specific tags, has directly described into the &lt;a href=&quot;http://jekyllrb.com/docs/templates/#code-snippet-highlighting&quot;&gt;Jekyll documentation&lt;/a&gt;. In this way the code will be included into a &lt;code class=&quot;highlighter-rouge&quot;&gt;.highlight&lt;/code&gt; CSS class and will be highlight according to the &lt;a href=&quot;https://github.com/mojombo/tpw/blob/master/css/syntax.css&quot;&gt;syntax.scss&lt;/a&gt; file. This is the...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is the eigth test post.</title>
-   <link href="http://localhost:4000/test-post-8"/>
-   <id>http://localhost:4000/test-post-8</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is the seventh test post.</title>
-   <link href="http://localhost:4000/test-post-7"/>
-   <id>http://localhost:4000/test-post-7</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is the sixth test post.</title>
-   <link href="http://localhost:4000/test-post-6"/>
-   <id>http://localhost:4000/test-post-6</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is the fifth test post</title>
-   <link href="http://localhost:4000/test-post-5"/>
-   <id>http://localhost:4000/test-post-5</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is the forth test post.</title>
-   <link href="http://localhost:4000/test-post-4"/>
-   <id>http://localhost:4000/test-post-4</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is the third test post.</title>
-   <link href="http://localhost:4000/test-post-3"/>
-   <id>http://localhost:4000/test-post-3</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
- </entry>
-
- 
-
- <entry>
-   <title>This is second test post.</title>
-   <link href="http://localhost:4000/test-post-2"/>
-   <id>http://localhost:4000/test-post-2</id>
-   <updated>2017-02-11T00:00:00+01:00</updated>
-   <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est optio ut impedit architecto iusto tempore rem, voluptates sed magni nisi corrupti praesentium voluptatum harum expedita temporibus ipsam, odit ad distinctio! Labore cupiditate distinctio facere earum, iste! Reiciendis possimus voluptatum explicabo corporis ab. Ex adipisci laudantium mollitia vel optio deserunt...</content>
+   <title>Mockito 101</title>
+   <link href="http://localhost:4000/Mockito101"/>
+   <id>http://localhost:4000/Mockito101</id>
+   <updated>2018-04-12T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;Necesito mockear las respuestas de servicios y repositories, para ello me planteo utilizar Mockito, y esta lectura parece contener toda la información sobre como empezar http://www.baeldung.com/injecting-mocks-in-spring&lt;/p&gt; &lt;p&gt;Mockito nos permite crear la respuesta que esperaríamos obtener de un servicio o de un repositorio. Para ello tan solo tenemos que declarar para...</content>
  </entry>
 
  

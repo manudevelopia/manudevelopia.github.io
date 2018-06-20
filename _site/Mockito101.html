@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>Mockito 101</title>
+  <meta name="description" content="Mockito primeros pasos">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+  <body>
+    <div id="wrap">
+
+      <!-- Navigation -->
+      <nav id="nav">
+	<div id="nav-list">
+		<a href="//">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Monochrome">About Monochrome</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+
+      <!-- Icon menu -->
+      <a id="nav-menu">
+        <div id="menu"></div>
+      </a>
+
+      <!-- Header -->
+      
+      <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="//">
+        <h1>
+          <span>devel</span>opia
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About Monochrome">About Monochrome</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+      <!-- Main content -->
+      <div id="container">
+
+        <main>
+
+          <article id="post-page">
+  <h2>Mockito 101</h2>
+  <time datetime="2018-04-12T00:00:00+02:00" class="by-line">12 Apr 2018</time>
+  <span>
+    
+    
+    <a href="/tag/testing"><code class="highligher-rouge"><nobr>testing</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/mockito"><code class="highligher-rouge"><nobr>mockito</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/performance"><code class="highligher-rouge"><nobr>performance</nobr></code>&nbsp;</a>
+    
+    </span>
+  <div class="content">
+
+    <p>Necesito mockear las respuestas de servicios y repositories, para ello me planteo utilizar Mockito, y esta lectura parece contener toda la información sobre como empezar http://www.baeldung.com/injecting-mocks-in-spring</p>
+
+<p>Mockito nos permite crear la respuesta que esperaríamos obtener de un servicio o de un repositorio. Para ello tan solo tenemos que declarar para cada llamada, la respuesta
+que esperamos obtener.</p>
+
+<p>Los pasos que he seguido para comenzar a utilizar Mockito han sido</p>
+
+<ul>
+  <li>Añadir las dependencias al maven.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.mockito<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>mockito-core<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.8.9<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Crear una clase de configuración que declara los Beans con los mocks que se interceptan en la llamada al servicio durante el test. Es posible declarar más de un Bean en 
+esta clase, podemos poner en ella todos los Beans de los elementos mockeados. En este caso se ha optado por utilizar el perfil  ‘test’ para lanzar el test.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="nd">@Profile</span><span class="o">(</span><span class="s">"test"</span><span class="o">)</span>
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NameServiceTestConfiguration</span> <span class="o">{</span>
+    <span class="nd">@Bean</span>
+    <span class="nd">@Primary</span>
+    <span class="kd">public</span> <span class="n">NameService</span> <span class="nf">nameService</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">Mockito</span><span class="o">.</span><span class="na">mock</span><span class="o">(</span><span class="n">NameService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<ul>
+  <li>Escribir el test. En el debemos declarar lo que se espera recibir cuando realicemos la llamada. A continuación un ejemplo básico sobre el que comenzar a escribir nuestros tests.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="nd">@ActiveProfiles</span><span class="o">(</span><span class="s">"test"</span><span class="o">)</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">SpringJUnit4ClassRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@SpringApplicationConfiguration</span><span class="o">(</span><span class="n">classes</span> <span class="o">=</span> <span class="n">MocksApplication</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserServiceTest</span> <span class="o">{</span>
+ 
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">UserService</span> <span class="n">userService</span><span class="o">;</span>
+ 
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="n">NameService</span> <span class="n">nameService</span><span class="o">;</span>
+ 
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">whenUserIdIsProvided_thenRetrievedNameIsCorrect</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">Mockito</span><span class="o">.</span><span class="na">when</span><span class="o">(</span><span class="n">nameService</span><span class="o">.</span><span class="na">getUserName</span><span class="o">(</span><span class="s">"SomeId"</span><span class="o">)).</span><span class="na">thenReturn</span><span class="o">(</span><span class="s">"Mock user name"</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">testName</span> <span class="o">=</span> <span class="n">userService</span><span class="o">.</span><span class="na">getUserName</span><span class="o">(</span><span class="s">"SomeId"</span><span class="o">);</span>
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertEquals</span><span class="o">(</span><span class="s">"Mock user name"</span><span class="o">,</span> <span class="n">testName</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="lecturas">Lecturas</h3>
+
+<ul>
+  <li><a href="http://www.baeldung.com/injecting-mocks-in-spring">http://www.baeldung.com/injecting-mocks-in-spring</a></li>
+  <li><a href="http://www.springboottutorial.com/spring-boot-unit-testing-and-mocking-with-mockito-and-junit">http://www.springboottutorial.com/spring-boot-unit-testing-and-mocking-with-mockito-and-junit</a></li>
+</ul>
+
+
+  </div>
+</article>
+
+
+
+        </main>
+
+        <!-- Pagination links -->
+        
+
+      </div>
+
+      <!-- Footer -->
+      <footer><span>@2017 - Monochrome</span></footer>
+
+
+      <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+    </div>
+  </body>
+</html>

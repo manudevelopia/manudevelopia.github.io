@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>Mockito 103</title>
+  <meta name="description" content="Mockito primeros pasos">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+  <body>
+    <div id="wrap">
+
+      <!-- Navigation -->
+      <nav id="nav">
+	<div id="nav-list">
+		<a href="//">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Monochrome">About Monochrome</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+
+      <!-- Icon menu -->
+      <a id="nav-menu">
+        <div id="menu"></div>
+      </a>
+
+      <!-- Header -->
+      
+      <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="//">
+        <h1>
+          <span>devel</span>opia
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About Monochrome">About Monochrome</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+      <!-- Main content -->
+      <div id="container">
+
+        <main>
+
+          <article id="post-page">
+  <h2>Mockito 103</h2>
+  <time datetime="2018-05-11T00:00:00+02:00" class="by-line">11 May 2018</time>
+  <span>
+    
+    
+    <a href="/tag/testing"><code class="highligher-rouge"><nobr>testing</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/mockito"><code class="highligher-rouge"><nobr>mockito</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/performance"><code class="highligher-rouge"><nobr>performance</nobr></code>&nbsp;</a>
+    
+    </span>
+  <div class="content">
+
+    <p>Tras leer Mockito102 veo el concepto, utilizado la reflexión se hace la mágia para hacer que se devuelva del elemento mockeado la respuesta que queremos para nuestro test, pero… no hay otra manera más estilo ‘Mockito’? Parece innecesariamente complicado hacer reflexión haciendo set del mock.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre>    <span class="kd">private</span> <span class="n">MyController</span> <span class="n">myController</span><span class="o">;</span>
+
+    <span class="nd">@Before</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setup</span><span class="o">(){</span>
+        <span class="n">myController</span> <span class="o">=</span> <span class="k">new</span> <span class="n">myController</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">myControllerTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">MyService</span> <span class="n">myService</span> <span class="o">=</span> <span class="n">mock</span><span class="o">(</span><span class="n">MyService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+        <span class="n">when</span><span class="o">(</span><span class="n">myService</span><span class="o">.</span><span class="na">getSomethingList</span><span class="o">().</span><span class="na">thenReturn</span><span class="o">(</span><span class="n">Collections</span><span class="o">.</span><span class="na">emptyList</span><span class="o">());</span>
+
+        <span class="n">ReflectionTestUtils</span><span class="o">.</span><span class="na">setField</span><span class="o">(</span><span class="n">myController</span><span class="o">,</span> <span class="s">"myService"</span><span class="o">,</span> <span class="n">myService</span><span class="o">);</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Something</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">myController</span><span class="o">.</span><span class="na">getSomethingList</span><span class="o">();</span>
+
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>
+    <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>La verdad que sí, haciendo uso de la anotación @InjectMock podemos lograr testear nuestra clase sin utilizar ReflectionTestUtils y haciendo que se devuelva dentro del controller lo que queremos que vuelva del service. El código resultante es mucho más comprensible.</p>
+
+<p>Nuestro código quedaría de la siguiente manera:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre>    <span class="nd">@InjectMock</span>
+    <span class="kd">private</span> <span class="n">MyController</span> <span class="n">myController</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">myControllerTest</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">MyService</span> <span class="n">myService</span> <span class="o">=</span> <span class="n">mock</span><span class="o">(</span><span class="n">MyService</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+        <span class="n">when</span><span class="o">(</span><span class="n">myService</span><span class="o">.</span><span class="na">getSomethingList</span><span class="o">().</span><span class="na">thenReturn</span><span class="o">(</span><span class="n">Collections</span><span class="o">.</span><span class="na">emptyList</span><span class="o">());</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Something</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">myController</span><span class="o">.</span><span class="na">getSomethingList</span><span class="o">();</span>
+
+        <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">());</span>
+    <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="lecturas">Lecturas</h3>
+<p><a href="http://www.springboottutorial.com/spring-boot-unit-testing-and-mocking-with-mockito-and-junit">http://www.springboottutorial.com/spring-boot-unit-testing-and-mocking-with-mockito-and-junit</a></p>
+
+
+  </div>
+</article>
+
+
+
+        </main>
+
+        <!-- Pagination links -->
+        
+
+      </div>
+
+      <!-- Footer -->
+      <footer><span>@2017 - Monochrome</span></footer>
+
+
+      <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+    </div>
+  </body>
+</html>
