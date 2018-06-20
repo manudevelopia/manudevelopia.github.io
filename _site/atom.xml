@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>developia.info | another developer stories repository</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <id>http://localhost:4000</id>
- <updated>2018-06-20T12:47:03+02:00</updated>
+ <link href="http://developia.info/atom.xml" rel="self"/>
+ <id>http://developia.info</id>
+ <updated>2018-06-20T13:01:07+02:00</updated>
  <author>
    <name>Manu Garcia</name>
    <uri>http://developia.info</uri>
@@ -15,8 +15,8 @@
 
  <entry>
    <title>Primer Hackday de GDG Toledo!</title>
-   <link href="http://localhost:4000/GDGHackDay-Toledo"/>
-   <id>http://localhost:4000/GDGHackDay-Toledo</id>
+   <link href="http://developia.info/GDGHackDay-Toledo"/>
+   <id>http://developia.info/GDGHackDay-Toledo</id>
    <updated>2018-06-17T00:00:00+02:00</updated>
    <content type="html">&lt;p&gt;El sábado 16 de Junio 2018 asistí al evento que organizaba el grupo de &lt;a href=&quot;https://www.meetup.com/gdgtoledo_es/&quot;&gt;meetup de GDG Toledo&lt;/a&gt;. Se trataba de un hackday temático de microservicios, testing y Docker. Para ello a los participantes se nos provisionó el siguiente [repositorio de Github] (https://github.com/gdgtoledo/docker-kata) para llevar a cabo la implementación...</content>
  </entry>
@@ -25,8 +25,8 @@
 
  <entry>
    <title>Mockito 104</title>
-   <link href="http://localhost:4000/Mockito104-copia"/>
-   <id>http://localhost:4000/Mockito104 copia</id>
+   <link href="http://developia.info/Mockito104-copia"/>
+   <id>http://developia.info/Mockito104 copia</id>
    <updated>2018-06-01T00:00:00+02:00</updated>
    <content type="html">&lt;p&gt;Ahora tengo otro problema, uso Dozer y con @Mock sobre el maper el mapeo no es correcto, seguramente por que al tratarse de un mock no se tiene información sobre como realizar el mapeo, tal y como se describe en el xml de mapeos, con lo que el resultado del...</content>
  </entry>
@@ -34,9 +34,19 @@
  
 
  <entry>
+   <title>Microservicios</title>
+   <link href="http://developia.info/Microservicios"/>
+   <id>http://developia.info/Microservicios</id>
+   <updated>2018-05-25T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;Buscando información sobre aquitectura de microservicios me he topado con el blog &lt;a href=&quot;http://enmilocalfunciona.io&quot;&gt;En mi local funciona&lt;/a&gt; y me ha gustado la serie que hay dedicada a &lt;a href=&quot;http://enmilocalfunciona.io/tag/microservicios/&quot;&gt;microservicios&lt;/a&gt; despúes de una rápida lectura me ha parecido bastante asequible replicar el ejemplo que utilizan en la serie ‘Arquitectura de microservicios...</content>
+ </entry>
+
+ 
+
+ <entry>
    <title>Mockito 103</title>
-   <link href="http://localhost:4000/Mockito103"/>
-   <id>http://localhost:4000/Mockito103</id>
+   <link href="http://developia.info/Mockito103"/>
+   <id>http://developia.info/Mockito103</id>
    <updated>2018-05-11T00:00:00+02:00</updated>
    <content type="html">&lt;p&gt;Tras leer Mockito102 veo el concepto, utilizado la reflexión se hace la mágia para hacer que se devuelva del elemento mockeado la respuesta que queremos para nuestro test, pero… no hay otra manera más estilo ‘Mockito’? Parece innecesariamente complicado hacer reflexión haciendo set del mock.&lt;/p&gt; &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td...</content>
  </entry>
@@ -45,8 +55,8 @@
 
  <entry>
    <title>Mockito 102</title>
-   <link href="http://localhost:4000/Mockito102"/>
-   <id>http://localhost:4000/Mockito102</id>
+   <link href="http://developia.info/Mockito102"/>
+   <id>http://developia.info/Mockito102</id>
    <updated>2018-04-24T00:00:00+02:00</updated>
    <content type="html">&lt;p&gt;Bien bien, lo recogido en el post ‘Mockito 101’ parece sencillo, pero en el mundo real los Controller/Services/Repositories llaman a servicios y repositories desde dentro de los métodos y claro no siempre se tiene en cuenta la testabilidad a la hora de escribir métodos, con lo que llegamos al y...</content>
  </entry>
@@ -55,8 +65,8 @@
 
  <entry>
    <title>Mockito 101</title>
-   <link href="http://localhost:4000/Mockito101"/>
-   <id>http://localhost:4000/Mockito101</id>
+   <link href="http://developia.info/Mockito101"/>
+   <id>http://developia.info/Mockito101</id>
    <updated>2018-04-12T00:00:00+02:00</updated>
    <content type="html">&lt;p&gt;Necesito mockear las respuestas de servicios y repositories, para ello me planteo utilizar Mockito, y esta lectura parece contener toda la información sobre como empezar http://www.baeldung.com/injecting-mocks-in-spring&lt;/p&gt; &lt;p&gt;Mockito nos permite crear la respuesta que esperaríamos obtener de un servicio o de un repositorio. Para ello tan solo tenemos que declarar para...</content>
  </entry>
