@@ -3,6 +3,7 @@ title: Primer Hackday de GDG Toledo!
 description: Evento Primer Hackday de GDG Toledo 
 header: Hackday de GDG Toledo
 tags: arquitectura docker feign springboot performance
+comments: true
 ---
 
 El sábado 16 de Junio 2018 asistí al evento que organizaba el grupo de [meetup de GDG Toledo](https://www.meetup.com/gdgtoledo_es/). Se trataba de un hackday temático de microservicios, testing y Docker. Para ello a los participantes se nos provisionó el siguiente [repositorio de Github] (https://github.com/gdgtoledo/docker-kata) para llevar a cabo la implementación de los requisitos.

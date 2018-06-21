@@ -3,6 +3,7 @@ title: Microservicios
 description: Microservicios
 header: Microservicios
 tags: arquitectura microservicios performance
+comments: true
 ---
 
 Buscando información sobre aquitectura de microservicios me he topado con el blog [En mi local funciona](http://enmilocalfunciona.io) y me ha gustado la serie que hay dedicada a [microservicios](http://enmilocalfunciona.io/tag/microservicios/) despúes de una rápida lectura me ha parecido bastante asequible replicar el ejemplo que utilizan en la serie 'Arquitectura de microservicios ' para montar
