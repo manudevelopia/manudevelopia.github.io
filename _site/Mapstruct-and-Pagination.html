@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>Mapstruct y Page<ObjectDto></title>
+  <meta name="description" content="Utilizando Mapstruct para generar una salida tipo Page<ObjectDto>">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+  <body>
+    <div id="wrap">
+
+      <!-- Navigation -->
+      <nav id="nav">
+	<div id="nav-list">
+		<a href="//">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Monochrome">About Monochrome</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://github.com/ManuDevelopia" target="_blank">Github</a>
+<a href="https://twitter.com/manudevelopia" target="_blank">Twitter</a>
+<a href="https://www.linkedin.com/in/manugarciarodriguez" target="_blank">Linkedin</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+
+      <!-- Icon menu -->
+      <a id="nav-menu">
+        <div id="menu"></div>
+      </a>
+
+      <!-- Header -->
+      
+      <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="//">
+        <h1>
+          <span>devel</span>opia
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About Monochrome">About Monochrome</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <a href="https://github.com/ManuDevelopia" target="_blank">Github</a>
+<a href="https://twitter.com/manudevelopia" target="_blank">Twitter</a>
+<a href="https://www.linkedin.com/in/manugarciarodriguez" target="_blank">Linkedin</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+      <!-- Main content -->
+      <div id="container">
+
+        <main>
+
+          <article id="post-page">
+  <h2>Mapstruct y Page&lt;ObjectDto&gt;</h2>
+  <time datetime="2018-07-01T00:00:00+02:00" class="by-line">01 Jul 2018</time>
+  <span>
+    
+    
+    <a href="/tag/arquitectura"><code class="highligher-rouge"><nobr>arquitectura</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/mapstruct"><code class="highligher-rouge"><nobr>mapstruct</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/dto"><code class="highligher-rouge"><nobr>dto</nobr></code>&nbsp;</a>
+    
+    </span>
+  <div class="content">
+
+    <p>Erase una vez una aplicación SpringBoot Groovy que tenía varias tablas, cada tabla tenía objetos, y los objetos eran Dto del modelo.</p>
+
+<p>La tabla de Clientes se llena de datos con la respuesta del servicio Rest de clientes. Este servicio se debe ser capaza de proveer los Dto de los Objetos soportando paginación y su gestión desde un navegador de páginas.</p>
+
+<p>Para el mapeo de los datos a Dto se cuenta con mapstruct.</p>
+
+<p>El objeto de vuelta de será tipo Page<ObjectDto>, con lo que previsiblemente será mapstruct quien se haga cargo de mapear la salida del servicio al Dto que se devuelva.</ObjectDto></p>
+
+<p>Nos proponemos hacer que Mapstruct se haga cargo del mapeo:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>  <span class="nd">@Mapper</span>
+  <span class="kd">interface</span> <span class="nc">ObjectMapper</span> <span class="o">{</span>
+
+      <span class="n">ClientMapper</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="n">Mappers</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">ClientMapper</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+
+      <span class="n">Page</span><span class="o">&lt;</span><span class="n">ClientDto</span><span class="o">&gt;</span> <span class="nf">clientsToPageClientDto</span><span class="o">()</span>
+      
+  <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Pero al compilar comienzan los problemas</p>
+
+<blockquote>
+  <p>error: No implementation type is registered for return type org.springframework.data.domain.Page&lt;com.example.dto.ClientDto&gt;.
+org.springframework.data.domain.Page<com.example.dto.ClientDto> clientsToClientsDto(org.springframework.data.domain.Page<com.example.model.Client> client);</com.example.model.Client></com.example.dto.ClientDto></p>
+</blockquote>
+
+<p>Según parece hay añgunos problemas para gererar los Dto de esta manera <a href="https://github.com/mapstruct/mapstruct/issues/607">mapstruct/issues/607</a> y no parece claro que sea factible la generación mediante este procedimiento, sin pasar por una interfaz funcional Java.</p>
+
+<p>Revisando el problema en conjunto y tratando de buscar un a solución tengo claro que:</p>
+
+<ul>
+  <li>Quiero usar el Page<ObjectDto> tal cual, sin wrappers.</ObjectDto></li>
+  <li>Quiero mantener la simplicidad, deshechando soluciones que solo aporten compleijdad</li>
+</ul>
+
+<p>Teniendo en cuenta que si el servicio Rest sólo ha de devolver datos de la base de datos y no hay un procesamiento intermedio, salvo su mapeo a Dto, quizás pueda-deba traer este tipo de objeto de la base de datos directamente desde el repository.</p>
+
+<p>La anotación @Query parerce una buena candidata para realizar esta acción</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>  <span class="nd">@Repository</span>
+  <span class="kd">interface</span> <span class="nc">ClientRepository</span> <span class="kd">extends</span> <span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Client</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+
+      <span class="nd">@Query</span><span class="o">(</span><span class="s">"""SELECT new com.example.dto.ClientDto(u.name, u.cif, u.addressLine1, u.addressLine2) 
+                FROM Client AS u 
+                ORDER BY u.name"""</span><span class="o">)</span>
+      <span class="n">Page</span><span class="o">&lt;</span><span class="n">ClientDto</span><span class="o">&gt;</span> <span class="nf">findAllPagedAsDto</span><span class="o">(</span><span class="n">Pageable</span> <span class="n">pageRequest</span><span class="o">)</span>
+
+  <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Bien parece que la cosa funciona, el @Service que consulta al @Repository recibe Page&lt;ClientDto&gt; y de ahí al @Controller, y finalmente se siver por el Rest directo a la tabla de Clientes tal y como era nuestro objetivo inicial.</p>
+
+<p>Esta implementación nos permite mapear directamente desde la base de datos a un obtejo Dto, sin pasar por un mapeador, y con unos mínimos cambios centrados en nuestras necesidades. Adicionalmente servimos los datos ordenados por nombre tal y como sería deseable en una tabla de clientes.</p>
+
+<p>Por contra perdemos cierto grado de automatización, ya que los cambios entre los objetos deben ser transladados manualmente a la query, la cual se ha optado por que utilize un constructor con todos los campos, para que así sea visible que campos lleva el Dto desde la query.</p>
+
+
+  </div>
+
+  <div>
+  	
+	<div id="disqus_thread"></div>
+		<script>
+			var disqus_config = function () {
+				this.page.url = "http://127.0.0.1:4000/Mapstruct-and-Pagination"; // <--- use canonical URL
+				this.page.identifier = "/Mapstruct and Pagination ";
+				};
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+
+				s.src = '//developia.disqus.com/embed.js'; // <--- use Disqus shortname
+
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+		</noscript>
+
+  </div>
+
+</article>
+
+
+
+        </main>
+
+        <!-- Pagination links -->
+        
+
+      </div>
+
+      <!-- Footer -->
+      <footer><span>@2017 - Monochrome</span></footer>
+
+
+      <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+    </div>
+  </body>
+</html>
