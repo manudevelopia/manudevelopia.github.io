@@ -75,6 +75,12 @@
 	  
 	    
 	  
+	    
+	  
+	    
+	  
+	    
+	  
     
     <!-- Nav links -->
 	  <a href="https://github.com/ManuDevelopia" target="_blank">Github</a>
@@ -147,6 +153,12 @@
 	    
 	      
 	    
+	      
+	    
+	      
+	    
+	      
+	    
       
       <!-- Nav links -->
 	    <a href="https://github.com/ManuDevelopia" target="_blank">Github</a>
@@ -182,16 +194,32 @@
     
     <a href="/tag/dto"><code class="highligher-rouge"><nobr>dto</nobr></code>&nbsp;</a>
     
+    
+    <a href="/tag/jpql"><code class="highligher-rouge"><nobr>jpql</nobr></code>&nbsp;</a>
+    
     </span>
   <div class="content">
 
     <p>Erase una vez una aplicación SpringBoot Groovy que tenía varias tablas, cada tabla tenía objetos, y los objetos eran Dto del modelo.</p>
 
-<p>La tabla de Clientes se llena de datos con la respuesta del servicio Rest de clientes. Este servicio se debe ser capaza de proveer los Dto de los Objetos soportando paginación y su gestión desde un navegador de páginas.</p>
+<p>La tabla de Clientes se llena de datos con la respuesta del servicio Rest de clientes. Este servicio se debe ser capaza de proveer los Dto de los Objetos soportando paginación y su gestión desde un navegador de páginas. Para el mapeo de los datos a Dto se cuenta con mapstruct.</p>
 
-<p>Para el mapeo de los datos a Dto se cuenta con mapstruct.</p>
+<p>El repositorio de Clientes tiene el siguiete método para devolver el objeto con el paginado de Clientes.</p>
 
-<p>El objeto de vuelta de será tipo Page<ObjectDto>, con lo que previsiblemente será mapstruct quien se haga cargo de mapear la salida del servicio al Dto que se devuelva.</ObjectDto></p>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>  <span class="nd">@Repository</span>
+  <span class="kd">interface</span> <span class="nc">ClientRepository</span> <span class="kd">extends</span> <span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Client</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+
+        <span class="n">Page</span><span class="o">&lt;</span><span class="n">Client</span><span class="o">&gt;</span> <span class="nf">findAllPagedAsDto</span><span class="o">(</span><span class="n">Pageable</span> <span class="n">pageRequest</span><span class="o">)</span>
+
+  <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>El objeto de vuelta de este repositorio será tipo Page&lt;Client&gt;, con lo que será <a href="http://mapstruct.org">Mapstruct</a> quien se haga cargo de mapear la salida del servicio al Dto que se devuelva Page<ClientDto>.</ClientDto></p>
 
 <p>Nos proponemos hacer que Mapstruct se haga cargo del mapeo:</p>
 
@@ -212,7 +240,7 @@
       
   <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Pero al compilar comienzan los problemas</p>
+<p>Pero en el proceso de compilación, en el que se genera la implmentación del mapeador, comienzan los problemas</p>
 
 <blockquote>
   <p>error: No implementation type is registered for return type org.springframework.data.domain.Page&lt;com.example.dto.ClientDto&gt;.
@@ -228,9 +256,9 @@ org.springframework.data.domain.Page<com.example.dto.ClientDto> clientsToClients
   <li>Quiero mantener la simplicidad, deshechando soluciones que solo aporten compleijdad</li>
 </ul>
 
-<p>Teniendo en cuenta que si el servicio Rest sólo ha de devolver datos de la base de datos y no hay un procesamiento intermedio, salvo su mapeo a Dto, quizás pueda-deba traer este tipo de objeto de la base de datos directamente desde el repository.</p>
+<p>Teniendo en cuenta que si el servicio Rest sólo ha de devolver datos de la base de datos y no hay un procesamiento intermedio (salvo su mapeo a Dto, quizás pueda-deba traer este tipo de objeto de la base de datos directamente desde el repository.</p>
 
-<p>La anotación @Query parerce una buena candidata para realizar esta acción</p>
+<p>La anotación <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query">@Query</a> parerce una buena candidata para realizar esta acción</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -251,7 +279,7 @@ org.springframework.data.domain.Page<com.example.dto.ClientDto> clientsToClients
 
   <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
 
-<p>Bien parece que la cosa funciona, el @Service que consulta al @Repository recibe Page&lt;ClientDto&gt; y de ahí al @Controller, y finalmente se siver por el Rest directo a la tabla de Clientes tal y como era nuestro objetivo inicial.</p>
+<p>Bien, parece que funciona, el @Service que consulta al @Repository recibe Page&lt;ClientDto&gt; y de ahí al @Controller, y finalmente se siver por el Rest directo a la tabla de Clientes tal y como era nuestro objetivo inicial.</p>
 
 <p>Esta implementación nos permite mapear directamente desde la base de datos a un obtejo Dto, sin pasar por un mapeador, y con unos mínimos cambios centrados en nuestras necesidades. Adicionalmente servimos los datos ordenados por nombre tal y como sería deseable en una tabla de clientes.</p>
 

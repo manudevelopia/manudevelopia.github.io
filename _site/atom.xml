@@ -4,7 +4,7 @@
  <title>developia.info | another developer stories repository</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2018-07-18T08:35:42+02:00</updated>
+ <updated>2018-07-20T12:50:13+02:00</updated>
  <author>
    <name>Manu Garcia</name>
    <uri>http://developia.info</uri>
@@ -14,7 +14,7 @@
  
 
  <entry>
-   <title>Mapstruct y Page\<ObjectDto\></title>
+   <title>Mapstruct y Page<ObjectDto></title>
    <link href="http://localhost:4000/Mapstruct-and-Pagination"/>
    <id>http://localhost:4000/Mapstruct and Pagination </id>
    <updated>2018-07-01T00:00:00+02:00</updated>

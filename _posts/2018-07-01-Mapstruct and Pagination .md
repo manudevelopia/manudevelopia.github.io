@@ -8,11 +8,20 @@ comments: true
 
 Erase una vez una aplicación SpringBoot Groovy que tenía varias tablas, cada tabla tenía objetos, y los objetos eran Dto del modelo. 
 
-La tabla de Clientes se llena de datos con la respuesta del servicio Rest de clientes. Este servicio se debe ser capaza de proveer los Dto de los Objetos soportando paginación y su gestión desde un navegador de páginas.
+La tabla de Clientes se llena de datos con la respuesta del servicio Rest de clientes. Este servicio se debe ser capaza de proveer los Dto de los Objetos soportando paginación y su gestión desde un navegador de páginas. Para el mapeo de los datos a Dto se cuenta con mapstruct.
 
-Para el mapeo de los datos a Dto se cuenta con mapstruct.
+El repositorio de Clientes tiene el siguiete método para devolver el objeto con el paginado de Clientes.
 
-El objeto de vuelta de será tipo Page<ObjectDto>, con lo que previsiblemente será mapstruct quien se haga cargo de mapear la salida del servicio al Dto que se devuelva.
+{% highlight java linenos %}
+  @Repository
+  interface ClientRepository extends JpaRepository<Client, Long> {
+
+        Page<Client> findAllPagedAsDto(Pageable pageRequest)
+
+  }
+{% endhighlight %}
+
+El objeto de vuelta de este repositorio será tipo Page\<Client\>, con lo que será [Mapstruct](http://mapstruct.org) quien se haga cargo de mapear la salida del servicio al Dto que se devuelva Page<ClientDto>.
 
 Nos proponemos hacer que Mapstruct se haga cargo del mapeo:
 
@@ -27,7 +36,7 @@ Nos proponemos hacer que Mapstruct se haga cargo del mapeo:
   }
 {% endhighlight %}
 
-Pero al compilar comienzan los problemas
+Pero en el proceso de compilación, en el que se genera la implmentación del mapeador, comienzan los problemas
 
 > error: No implementation type is registered for return type org.springframework.data.domain.Page\<com.example.dto.ClientDto\>.
 > org.springframework.data.domain.Page<com.example.dto.ClientDto> clientsToClientsDto(org.springframework.data.domain.Page<com.example.model.Client> client);
@@ -39,9 +48,9 @@ Revisando el problema en conjunto y tratando de buscar un a solución tengo clar
 - Quiero usar el Page<ObjectDto> tal cual, sin wrappers.
 - Quiero mantener la simplicidad, deshechando soluciones que solo aporten compleijdad
 
-Teniendo en cuenta que si el servicio Rest sólo ha de devolver datos de la base de datos y no hay un procesamiento intermedio, salvo su mapeo a Dto, quizás pueda-deba traer este tipo de objeto de la base de datos directamente desde el repository.
+Teniendo en cuenta que si el servicio Rest sólo ha de devolver datos de la base de datos y no hay un procesamiento intermedio (salvo su mapeo a Dto, quizás pueda-deba traer este tipo de objeto de la base de datos directamente desde el repository.
 
-La anotación @Query parerce una buena candidata para realizar esta acción
+La anotación [@Query](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query) parerce una buena candidata para realizar esta acción
 
 {% highlight java linenos %}
   @Repository
@@ -55,7 +64,7 @@ La anotación @Query parerce una buena candidata para realizar esta acción
   }
 {% endhighlight %}
 
-Bien parece que la cosa funciona, el @Service que consulta al @Repository recibe Page\<ClientDto\> y de ahí al @Controller, y finalmente se siver por el Rest directo a la tabla de Clientes tal y como era nuestro objetivo inicial.
+Bien, parece que funciona, el @Service que consulta al @Repository recibe Page\<ClientDto\> y de ahí al @Controller, y finalmente se siver por el Rest directo a la tabla de Clientes tal y como era nuestro objetivo inicial.
 
 Esta implementación nos permite mapear directamente desde la base de datos a un obtejo Dto, sin pasar por un mapeador, y con unos mínimos cambios centrados en nuestras necesidades. Adicionalmente servimos los datos ordenados por nombre tal y como sería deseable en una tabla de clientes.
 
