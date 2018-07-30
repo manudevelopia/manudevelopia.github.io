@@ -2,7 +2,7 @@
 <div id="disqus_thread"></div>
 <script>
   var disqus_config = function () {
-    this.page.url = "http://www.developia.info{{ page.url }}"; // <--- use canonical URL
+    this.page.url = "{{ page.url }}"; // <--- use canonical URL
     this.page.identifier = "{{ page.id }}";
   };
 (function() { // DON'T EDIT BELOW THIS LINE
