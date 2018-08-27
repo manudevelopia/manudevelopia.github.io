@@ -4,7 +4,7 @@
  <title>developia.info | another developer stories repository</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <id>http://localhost:4000</id>
- <updated>2018-07-20T12:50:13+02:00</updated>
+ <updated>2018-08-27T14:32:05+02:00</updated>
  <author>
    <name>Manu Garcia</name>
    <uri>http://developia.info</uri>
@@ -14,9 +14,19 @@
  
 
  <entry>
+   <title>Mapstruct y el formateado</title>
+   <link href="http://localhost:4000/Mapstruct-y-el-formateado"/>
+   <id>http://localhost:4000/Mapstruct y el formateado</id>
+   <updated>2018-07-15T00:00:00+02:00</updated>
+   <content type="html">&lt;p&gt;La aplición SpringBoot Groovy que tenía varias tablas, cada tabla tenía objetos, sigue creciendo y conforme a ello se plantean nuevos retos.&lt;/p&gt; &lt;p&gt;Uno de los @Controller recibe los datos de un formulario que contiene caracteres y números formateados con ‘,’ como separador decimal, ‘.’ como separador de miles.&lt;/p&gt; &lt;p&gt;En un...</content>
+ </entry>
+
+ 
+
+ <entry>
    <title>Mapstruct y Page<ObjectDto></title>
-   <link href="http://localhost:4000/Mapstruct-and-Pagination"/>
-   <id>http://localhost:4000/Mapstruct and Pagination </id>
+   <link href="http://localhost:4000/Mapstruct-and-Pagination-copia"/>
+   <id>http://localhost:4000/Mapstruct and Pagination  copia</id>
    <updated>2018-07-01T00:00:00+02:00</updated>
    <content type="html">&lt;p&gt;Erase una vez una aplicación SpringBoot Groovy que tenía varias tablas, cada tabla tenía objetos, y los objetos eran Dto del modelo.&lt;/p&gt; &lt;p&gt;La tabla de Clientes se llena de datos con la respuesta del servicio Rest de clientes. Este servicio se debe ser capaza de proveer los Dto de los...</content>
  </entry>

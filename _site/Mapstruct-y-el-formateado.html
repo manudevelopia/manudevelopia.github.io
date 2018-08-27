@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>Mapstruct y el formateado</title>
+  <meta name="description" content="Utilizando Mapstruct para gestionar el formateo numérico">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+  <body>
+    <div id="wrap">
+
+      <!-- Navigation -->
+      <nav id="nav">
+	<div id="nav-list">
+		<a href="//">Home</a>
+
+		<!-- Nav pages -->
+	  
+	    
+	  
+	    
+	      <a href="/about" title="About Monochrome">About Monochrome</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+    
+    <!-- Nav links -->
+	  <a href="https://github.com/ManuDevelopia" target="_blank">Github</a>
+<a href="https://twitter.com/manudevelopia" target="_blank">Twitter</a>
+<a href="https://www.linkedin.com/in/manugarciarodriguez" target="_blank">Linkedin</a>
+
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+
+      <!-- Icon menu -->
+      <a id="nav-menu">
+        <div id="menu"></div>
+      </a>
+
+      <!-- Header -->
+      
+      <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="//">
+        <h1>
+          <span>devel</span>opia
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+      <!-- Nav pages -->
+	    
+	      
+	    
+	      
+	        <a href="/about" title="About Monochrome">About Monochrome</a>
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+	      
+	    
+      
+      <!-- Nav links -->
+	    <a href="https://github.com/ManuDevelopia" target="_blank">Github</a>
+<a href="https://twitter.com/manudevelopia" target="_blank">Twitter</a>
+<a href="https://www.linkedin.com/in/manugarciarodriguez" target="_blank">Linkedin</a>
+
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+      <!-- Main content -->
+      <div id="container">
+
+        <main>
+
+          <article id="post-page">
+  <h2>Mapstruct y el formateado</h2>
+  <time datetime="2018-07-15T00:00:00+02:00" class="by-line">15 Jul 2018</time>
+  <span>
+    
+    
+    <a href="/tag/arquitectura"><code class="highligher-rouge"><nobr>arquitectura</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/mapstruct"><code class="highligher-rouge"><nobr>mapstruct</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/formateo"><code class="highligher-rouge"><nobr>formateo</nobr></code>&nbsp;</a>
+    
+    
+    <a href="/tag/numérico"><code class="highligher-rouge"><nobr>numérico</nobr></code>&nbsp;</a>
+    
+    </span>
+  <div class="content">
+
+    <p>La aplición SpringBoot Groovy que tenía varias tablas y cada tabla tenía objetos, sigue creciendo y conforme a ello se plantean nuevos retos.</p>
+
+<p>Por exigencias del guión, un @Controller recibe los datos de un formulario que contiene como caracteres datos numéricos formateados utilizando ‘,’ como separador decimal y ‘.’ como separador de miles.</p>
+
+<p>En un primer momento se podría pensar que que podemos usar el objeto del modelo que crea el formulario, ya que prácticamente todos los campos coinciden en número, pero los tipos numéricos y caracteres numericos formateados se van a encargar de quitarnos rápido este pensamiento. También cambría pensar que los números habrían de llegar al controller ya trasnformados, en formato numérico que al fin y al cabo es lo que son.</p>
+
+<p>Si queremos atender al guión y que nuestro controller atienda peticiones con datos númericos formateados, nuestro controller debe ser capaz de tratar con ello.</p>
+
+<p>Para ello el objeto que recibe los datos del formulario será exclusivo para este fin, utilizará String como tipo para recibir estos datos numéricos formateados, directamente del formulario, para luego transformarlo al tipo destino Double.</p>
+
+<p>Para el mapeo de objetos se utiliza <a href="http://mapstruct.org">Mapstruct</a> y vamos a utilizar <a href="http://mapstruct.org/documentation/stable/reference/html/#implicit-type-conversions">numberFormat</a> para convertir el dato.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>  <span class="nd">@Mapper</span>
+  <span class="kd">interface</span> <span class="nc">ObjetoMapper</span> <span class="o">{</span>
+
+      <span class="n">ObjetoMapper</span> <span class="n">INSTANCE</span> <span class="o">=</span> <span class="n">Mappers</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="n">ObjetoMapper</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+
+      <span class="nd">@Mapping</span><span class="o">(</span><span class="n">source</span> <span class="o">=</span> <span class="s">"number"</span> <span class="o">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s">"number"</span><span class="o">,</span> <span class="n">numberFormat</span> <span class="o">=</span> <span class="s">"###,###.##"</span><span class="o">)</span>
+      <span class="n">Objeto</span> <span class="nf">objectoFormToObjeto</span><span class="o">(</span><span class="n">ObjetoForm</span> <span class="n">objetoForm</span><span class="o">)</span>
+    
+  <span class="o">}</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p>Lecturas
+https://docs.oracle.com/javase/tutorial/i18n/format/decimalFormat.html
+http://mapstruct.org/documentation/stable/reference/html/#implicit-type-conversions)</p>
+
+
+  </div>
+
+  <div>
+  	
+	<div id="disqus_thread"></div>
+		<script>
+			var disqus_config = function () {
+				this.page.url = "http://127.0.0.1:4000/Mapstruct-y-el-formateado"; // <--- use canonical URL
+				this.page.identifier = "/Mapstruct y el formateado";
+				};
+				(function() { // DON'T EDIT BELOW THIS LINE
+				var d = document, s = d.createElement('script');
+
+				s.src = '//developia.disqus.com/embed.js'; // <--- use Disqus shortname
+
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+				})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+		</noscript>
+
+  </div>
+
+</article>
+
+
+
+        </main>
+
+        <!-- Pagination links -->
+        
+
+      </div>
+
+      <!-- Footer -->
+      <footer><span>@2017 - Monochrome</span></footer>
+
+
+      <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+    </div>
+  </body>
+</html>
