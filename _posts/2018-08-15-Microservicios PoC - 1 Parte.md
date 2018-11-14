@@ -29,4 +29,4 @@ Hasta el momento se han empleado para la implementación:
 - [Mockito](http://site.mockito.org)
 - [RestAssured](http://rest-assured.io)
 
-El código se ha versionado y descansa en Github.
+El código puede encontrarse en [Github](https://github.com/manudevelopia/showltan)

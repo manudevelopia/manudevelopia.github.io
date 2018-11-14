@@ -1,12 +1,12 @@
 ---
-title: Microservicios PoC - 4 Parte
-description: Microservicios PoC - 4 Parte
-header: Microservicios PoC - 4 Parte
+title: Microservicios PoC - 5 Parte
+description: Microservicios PoC - 5 Parte
+header: Microservicios PoC - 5 Parte
 tags: arquitectura microservicios performance poc
 comments: true
 ---
 
-Recapitulando lo visto hasta ahora en la PoC de microservicios, en la primera parte se implmentaron 3 microservicios que se podrían llamar entre ellos. En la segunda parte se le incluyo un servicio para distribuir configuraciones desde un repositorio. En la tercera parte se añadió [Eureka](https://github.com/Netflix/eureka) como servicio para descubrir las instancias levantadas de los servicios.
+Recapitulando lo visto hasta ahora en la PoC de microservicios, en la primera parte se implmentaron 3 microservicios que se podrían llamar entre ellos. En la segunda parte se le incluyo un servicio para distribuir configuraciones desde un repositorio. En la tercera parte se añadió [Eureka](https://github.com/Netflix/eureka) como servicio para descubrir las instancias levantadas de los servicios. La cuarta parte ha provisto de un sistema de respuestas por defecto para para los casos de caída de servicios.
 
 En este momento nuestros servicios pueden obtener una configuración desde un repositorio, arrancar con dicha configuración, llamarse entre ellos y devolver un resultado, y ser descubiertos por el servicio [Eureka](https://github.com/Netflix/eureka)
 

@@ -24,4 +24,4 @@ Hasta el momento se han empleado para la implementación:
 - [RestAssured](http://rest-assured.io)
 - [Spring Config](https://cloud.spring.io/spring-cloud-config/)
 
-El código se versionará y finalmente descansará en Github.
+El código puede encontrarse en [Github](https://github.com/manudevelopia/showltan) y la [configuración](https://github.com/manudevelopia/showltan-config) 
