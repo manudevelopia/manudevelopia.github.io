@@ -17,7 +17,7 @@ En esta segunda parte se implementará la gestión de la configuración de los m
 Hasta el momento se han empleado para la implementación:
 
 - Java o Groovy
-- Gradle
+- [Gradle](https://gradle.org)
 - [SpringBoot](https://spring.io/projects/spring-boot)
 - [Feing](https://github.com/OpenFeign/feign)
 - [Mockito](http://site.mockito.org)
