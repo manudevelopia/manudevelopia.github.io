@@ -8,8 +8,6 @@ comments: true
 
 Recapitulando lo visto hasta ahora en la PoC de microservicios, en la primera parte se implmentaron 3 microservicios que se podrían llamar entre ellos. En la segunda parte se le incluyo un servicio para distribuir configuraciones desde un repositorio. En la tercera parte se añadió [Eureka](https://github.com/Netflix/eureka) como servicio para descubrir las instancias levantadas de los servicios.
 
-En este momento nuestros servicios pueden obtener una configuración desde un repositorio, arrancar con dicha configuración, llamarse entre ellos y devolver un resultado, y ser descubiertos por el servicio [Eureka](https://github.com/Netflix/eureka)
-
 Es turno de ver como afrontar la posibilidad de que uno o varios de nuestos microservicios no está disponible y como ha de comportarse el sistema en ese momento. Para nuestro caso concreto, el servicio usuarios llama a los servicios de películas y series, y uno o ambos no están disponibles.
 
 Para manejar esta situación utilizaremos [Hystrix](https://github.com/Netflix/Hystrix), que al igual que sucedía con [Eureka](https://github.com/Netflix/eureka) mediante una anotación en nuestra case principal, otra para el método de llamada a servicio que se quiera cubrir y la definición de un método para el caso de indisponibilidad (fallbackMethod) podremos disponer de una estrategia para el caso en el que el servicio no esté disponible.
